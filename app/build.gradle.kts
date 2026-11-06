@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "org.example.pocketnotes"
+    namespace = "io.github.vasuh10.pocketnotes"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "org.example.pocketnotes"
+        applicationId = "io.github.vasuh10.pocketnotes"
         minSdk = 23
         targetSdk = 35
         versionCode = 1
@@ -34,5 +34,6 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material-icons-extended")
+
     debugImplementation("androidx.compose.ui:ui-tooling")
 }
