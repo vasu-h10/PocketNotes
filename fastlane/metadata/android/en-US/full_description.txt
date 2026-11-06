@@ -1,0 +1,21 @@
+
+Pocket Notes is a simple and lightweight offline note-taking application.
+
+FEATURES
+
+• Create personal notes
+• Edit existing notes
+• Delete unwanted notes
+• Search notes by title or content
+• Switch between light and dark themes
+• Automatically save notes on your device
+
+PRIVACY
+
+• No account registration required
+• No internet connection required
+• No advertisements
+• No analytics tracking
+• Notes are stored locally on your device
+
+Pocket Notes helps you organize your thoughts and important information with a clean and simple interface.
