@@ -1,0 +1,1 @@
+A simple, private offline notes app with search and dark mode
