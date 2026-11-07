@@ -1,5 +1,5 @@
 
-package org.example.pocketnotes
+package io.github.vasuh10.pocketnotes
 
 import android.os.Bundle
 import android.content.Context
