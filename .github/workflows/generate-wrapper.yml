@@ -27,19 +27,20 @@ jobs:
           gradle-version: '8.9'
           validate-wrappers: false
 
-      - name: Generate Gradle Wrapper
+      - name: Generate real Gradle Wrapper
         run: |
+          rm -f gradle/wrapper/gradle-wrapper.jar
           gradle wrapper --gradle-version 8.9 --distribution-type bin --no-validate-url
           chmod +x gradlew
+          ls -lh gradle/wrapper/gradle-wrapper.jar
 
-      - name: Verify Wrapper Files
+      - name: Verify Wrapper
         run: |
           test -s gradlew
           test -s gradle/wrapper/gradle-wrapper.jar
           test -s gradle/wrapper/gradle-wrapper.properties
-          jar tf gradle/wrapper/gradle-wrapper.jar
 
-      - name: Commit wrapper files
+      - name: Commit Wrapper
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Generate valid Gradle Wrapper"
