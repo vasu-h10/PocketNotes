@@ -26,7 +26,7 @@ jobs:
           gradle-version: '8.9'
 
       - name: Generate Gradle Wrapper
-        run: gradle wrapper --gradle-version 8.9 --distribution-type bin
+        run: gradle wrapper --gradle-version 8.9 --distribution-type bin --no-validate-url
 
       - name: Commit wrapper files
         uses: stefanzweifel/git-auto-commit-action@v5
