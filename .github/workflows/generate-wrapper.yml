@@ -46,4 +46,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Generate valid Gradle Wrapper"
-          file_pattern: "gradlew gradlew.bat gradle/wrapper/*"
+          file_pattern: "gradlew gradlew.bat gradle/wrapper/*" 
