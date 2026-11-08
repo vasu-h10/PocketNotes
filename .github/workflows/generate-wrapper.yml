@@ -7,6 +7,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: generate-gradle-wrapper
+  cancel-in-progress: false
+
 jobs:
   generate-wrapper:
     runs-on: ubuntu-latest
@@ -14,6 +18,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Java 17
         uses: actions/setup-java@v4
@@ -27,7 +33,11 @@ jobs:
           gradle-version: '8.9'
           validate-wrappers: false
 
-      - name: Generate real Gradle Wrapper
+      - name: Synchronize main branch
+        run: |
+          git pull --rebase origin main
+
+      - name: Generate Gradle Wrapper
         run: |
           rm -f gradle/wrapper/gradle-wrapper.jar
           gradle wrapper --gradle-version 8.9 --distribution-type bin --no-validate-url
@@ -46,4 +56,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Generate valid Gradle Wrapper"
-          file_pattern: "gradlew gradlew.bat gradle/wrapper/*" 
+          file_pattern: "gradlew gradlew.bat gradle/wrapper/*"
