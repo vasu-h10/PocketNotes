@@ -1,3 +1,4 @@
+
 name: Generate Gradle Wrapper
 
 on:
@@ -26,7 +27,16 @@ jobs:
           gradle-version: '8.9'
 
       - name: Generate Gradle Wrapper
-        run: gradle wrapper --gradle-version 8.9 --distribution-type bin --no-validate-url
+        run: |
+          gradle wrapper --gradle-version 8.9 --distribution-type bin --no-validate-url
+          chmod +x gradlew
+
+      - name: Verify Wrapper Files
+        run: |
+          test -f gradlew
+          test -f gradle/wrapper/gradle-wrapper.jar
+          test -f gradle/wrapper/gradle-wrapper.properties
+          ls -la gradle/wrapper/
 
       - name: Commit wrapper files
         uses: stefanzweifel/git-auto-commit-action@v5
