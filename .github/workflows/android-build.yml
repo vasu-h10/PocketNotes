@@ -40,8 +40,10 @@ jobs:
           ls -la
           ls -la app
 
-      - name: Build Pocket Notes
-        run: gradle :app:assembleDebug --stacktrace
+            - name: Build Pocket Notes
+        run: |
+          chmod +x gradlew
+          ./gradlew :app:assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
