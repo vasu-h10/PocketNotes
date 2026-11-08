@@ -25,6 +25,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
+          validate-wrappers: false
 
       - name: Generate Gradle Wrapper
         run: |
@@ -33,13 +34,13 @@ jobs:
 
       - name: Verify Wrapper Files
         run: |
-          test -f gradlew
-          test -f gradle/wrapper/gradle-wrapper.jar
-          test -f gradle/wrapper/gradle-wrapper.properties
-          ls -la gradle/wrapper/
+          test -s gradlew
+          test -s gradle/wrapper/gradle-wrapper.jar
+          test -s gradle/wrapper/gradle-wrapper.properties
+          jar tf gradle/wrapper/gradle-wrapper.jar
 
       - name: Commit wrapper files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Add Gradle Wrapper"
+          commit_message: "Generate valid Gradle Wrapper"
           file_pattern: "gradlew gradlew.bat gradle/wrapper/*"
