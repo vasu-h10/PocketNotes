@@ -39,8 +39,15 @@ jobs:
           echo "Checking Gradle project..."
           ls -la
           ls -la app
+          ls -la gradle/wrapper
 
-            - name: Build Pocket Notes
+      - name: Verify Gradle Wrapper
+        run: |
+          test -s gradlew
+          test -s gradle/wrapper/gradle-wrapper.jar
+          test -s gradle/wrapper/gradle-wrapper.properties
+
+      - name: Build Pocket Notes
         run: |
           chmod +x gradlew
           ./gradlew :app:assembleDebug --stacktrace
