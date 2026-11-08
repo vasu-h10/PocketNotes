@@ -1,0 +1,35 @@
+name: Generate Gradle Wrapper
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-wrapper:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: Generate Gradle Wrapper
+        run: gradle wrapper --gradle-version 8.9 --distribution-type bin
+
+      - name: Commit wrapper files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Add Gradle Wrapper"
+          file_pattern: "gradlew gradlew.bat gradle/wrapper/*"
