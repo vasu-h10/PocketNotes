@@ -1,15 +1,13 @@
-
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
         android:label="Pocket Notes"
-        android:supportsRtl="true"
         android:theme="@android:style/Theme.Material.Light.NoActionBar">
 
         <activity
-            android:name=".MainActivity"
+            android:name="io.github.vasuh10.pocketnotes.MainActivity"
             android:exported="true">
 
             <intent-filter>
@@ -18,7 +16,6 @@
             </intent-filter>
 
         </activity>
-
     </application>
 
 </manifest>
